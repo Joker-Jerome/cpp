@@ -38,7 +38,7 @@ int main(int argc, char *argv[])
     			}
     		} else {
     			cout << "illegal move" << endl;
-    			break;
+    			//break;
 		}
 	}
     return 0;
@@ -60,7 +60,7 @@ int main(int argc, char *argv[])
 					}
 				} else {
 					cout << "illegal move" << endl;
-					break;
+					//break;
 				}
 		}
 		return 0;
@@ -70,24 +70,24 @@ int main(int argc, char *argv[])
 	// file input mode
 	 ifstream bfile;
 	 bfile.open(argv[2]);
-
- 	if (!bfile) {
- 		return 1;
- 	}
-	// create the object
-	Conway state(bfile);
-	//cout << state;
+ 	 if (!bfile) {
+ 		 return 1;
+ 	 }
+	 // create the object
+	 Conway state(bfile);
+	 //cout << state;
 
 	 // get the input from command lines
 	 int fromR,fromC,toR,toC;
 	 int i = 3;
 	 int count = 0;
-	 while(strlen(argv[i+3])>0) {
+	 while((i+3) <= argc) {
 		 count++;
 		 fromR = atoi(argv[i]);
 		 fromC = atoi(argv[i+1]);
 		 toR = atoi(argv[i+2]);
 		 toC = atoi(argv[i+3]);
+
 		if (state.isLegalMove(fromR,fromC,toR,toC)) {
 			state.makeMove(fromR,fromC,toR,toC);
 			if (state.isSolved()) {
@@ -117,7 +117,7 @@ int main(int argc, char *argv[])
 	 int fromR,fromC,toR,toC;
 	 int i = 1;
 	 int count = 0;
-	 while(strlen(argv[i+3])>0) {
+	 while((i+3) <= argc) {
 		 count++;
 		 fromR = atoi(argv[i]);
 		 fromC = atoi(argv[i+1]);
