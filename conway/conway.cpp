@@ -18,10 +18,10 @@ namespace cs427_527
 		for(int i = 0; i < rowNum; i++)
 			for(int j = 0; j < colNum; j++)
 				ary[i][j] = '.';
-		ary[2][1] = 'x';
-		ary[2][2] = 'x';
-		ary[2][3] = 'x';
-		ary[3][3] = 'x';
+		ary[2][1] = 'X';
+		ary[2][2] = 'X';
+		ary[2][3] = 'X';
+		ary[3][3] = 'X';
 
 	}
 
@@ -48,11 +48,11 @@ namespace cs427_527
 
 			// read the soldiers information
 			while(getline(s,input) && input.length() >0) {
-				cout << input << endl;
+			//	cout << input << endl;
 				for (int i = 0; i < colNum; i++) {
-					if ((input[i] == '.') || (input[i] == 'x')) {
+					if ((input[i] == '.') || (input[i] == 'X')) {
 						ary[count][i] = input[i];
-						cout << input[i];
+			//			cout << input[i];
 					}
 				}
 				count++;
@@ -138,15 +138,15 @@ namespace cs427_527
 	 * 	move is legal.
 	 */
 	void Conway::makeMove(int fromR, int fromC, int toR, int toC) {
-		bool legal = this->isLegalMove(fromR, fromC, toR, toC);
-		if (legal == 0) {
-			cout << "illegal move" << endl;
-		} else {
+		//bool legal = this->isLegalMove(fromR, fromC, toR, toC);
+		//if (legal == 0) {
+		//	cout << "illegal move" << endl;
+		//} else {
 			this->ary[fromR][fromC] = '.';
 			this->ary[toR][toC] = 'X';
 			this->ary[(fromR+toR)/2][(fromC+toC)/2] = '.';
 			this->totalCounts++;
-		}
+		//	}
 
 	}
 

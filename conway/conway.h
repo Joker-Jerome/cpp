@@ -39,8 +39,9 @@ namespace cs427_527
 		 */
 		~Conway();
 
-		Conway& Conway::operator=(const Conway &rhs);
-		Conway& Conway::operator=(Conway &&rhs);
+		Conway& operator=(const Conway &rhs);
+		Conway& operator=(Conway &&rhs);
+		friend ostream& operator<<(ostream& output, const Conway& obj);
 		/**
 		 *  Takes an integer between 0 and 6
 		 *  and determine whether is legal.
