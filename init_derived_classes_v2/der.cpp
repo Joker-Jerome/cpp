@@ -20,7 +20,7 @@ class Derived: public Base
 public:
     double m_cost;
  
-    Derived(double cost=0.0, int id=777)
+    Derived(double cost=0.0, int id=787)
         : Base(id),m_cost(cost)
     {
     }
