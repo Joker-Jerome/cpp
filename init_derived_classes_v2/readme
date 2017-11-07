@@ -1,0 +1,11 @@
+In more detail, here’s what happens:
+
+Memory for derived is allocated.
+The Derived(double, int) constructor is called, where cost = 1.3, and id = 5
+The compiler looks to see if we’ve asked for a particular Base class constructor. We have! So it calls Base(int) with id = 5.
+The base class constructor initialization list sets m_id to 5
+The base class constructor body executes, which does nothing
+The base class constructor returns
+The derived class constructor initialization list sets m_cost to 1.3
+The derived class constructor body executes, which does nothing
+the derived class constructor returns
