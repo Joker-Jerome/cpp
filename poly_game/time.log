@@ -1,0 +1,20 @@
+ESTIMATE of time to complete assignment: 10 hours
+
+      Time     Time
+Date  Started  Spent Work completed
+----  -------  ----  --------------
+9/21   8:00pm  1:00  read the assignment and some online tutorials.
+9/24   10:00am 3:00  wrote main functions seperately.
+9/27   1:00pm  5:00  finished testing and debugging.
+               ----
+               9:00  TOTAL time spent
+
+I discussed my solution with: stackoverflow
+
+Discussion:
+1. When it comes to the structure and algorithm, this homework assignment is not that hard. There is no need to use very complicated algorithm and the program is fast. 
+2. Dealing with the object oriented programming with C++ is a little bit difficult, becuase the syntax is different, I still need some efforts to get used to the specific data structures of C++, different constructors and so on.
+3. One of the most tricky part is to do the data input and output with C++ for this program, using corresponding functions of C++ is not convenient. For this assignment, since there are different types of input and arguments, dealing with them is a little bit hard. 
+4. It is my first time to come across a test like test08, I basically checked every methods and every statement, it seemed everything was fine. However, it failed. Finally I put the "static const int SIZE" to the public and solve the problem. 
+5. Exception handling is still a big issue, in this assignment there are a wide variety of inptus and I spent lots of time thinking of the possible errors to ensure the program can run gracefully.  
+
