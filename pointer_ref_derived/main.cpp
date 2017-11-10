@@ -10,7 +10,7 @@ int main()
     std::cout << "rDerived is a " << rDerived.getName() << " and has value " << rDerived.getValue() << '\n';
  
     Derived *pDerived = &derived;
-    std::cout << "pDerived is a " << pDerived->getName() << " and has value " << pDerived->getValue() << 'n';
+    std::cout << "pDerived is a " << pDerived->getName() << " and has value " << pDerived->getValue() << '\n';
  
     return 0;
 }
