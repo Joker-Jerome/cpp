@@ -29,7 +29,7 @@ namespace cs427_527
 
 	}
 
-	friend ostream& operator <<(ostream& output,PuzzleMove CurMove) {
+	ostream& operator <<(ostream& output,PuzzleMove CurMove) {
 
 				for(int i = 0; i<CurMove.moveVec.size();i++) {
 					output << CurMove.moveVec[i];
