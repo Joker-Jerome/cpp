@@ -15,7 +15,7 @@ using namespace std;
 
 namespace cs427_527
 {
-	class SpinOut
+	class SpinOut : public Puzzle
 	{
 	public:
 	  static const int SIZE = 7; 

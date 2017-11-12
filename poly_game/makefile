@@ -1,6 +1,6 @@
 CXX = g++
 CXXFLAGS = -g -Wall -pedantic -std=c++11
 
-SpinOut: main.o spinout.o 
+Game: game_main.o puzzle.o conway.o spinout.o 
 	${CXX} ${CXXFLAGS} -o $@ $^
 

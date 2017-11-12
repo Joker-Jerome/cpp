@@ -12,7 +12,7 @@ using namespace std;
 
 namespace cs427_527
 {
-	class Conway
+	class Conway: public Puzzle
 	{
 	public:
 	    /**
