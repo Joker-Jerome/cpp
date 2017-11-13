@@ -16,22 +16,22 @@ namespace cs427_527
 
 	}
 
-	Puzzle ConwayFactory::puzzleFromString(string init){
+//	Puzzle* ConwayFactory::puzzleFromString(string init){
+//		Puzzle *puzzle;
+//		puzzle = new Conway(init);
+//
+//		return(puzzle);
+//
+//	}
+
+	Puzzle* ConwayFactory::puzzleFromStream(ifstream& init){
 		Puzzle *puzzle;
 		puzzle = new Conway(init);
 
 		return(puzzle);
-
 	}
 
-	Puzzle ConwayFactory::puzzleFromStream(ifstream init){
-		Puzzle *puzzle;
-		puzzle = new Conway(init);
-
-		return(puzzle);
-	}
-
-	Puzzle ConwayFactory::defaultPuzzle(){
+	Puzzle* ConwayFactory::defaultPuzzle(){
 			Puzzle *puzzle;
 			puzzle = new Conway();
 

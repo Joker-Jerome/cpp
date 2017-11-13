@@ -16,19 +16,22 @@ namespace cs427_527
 
 	}
 
-	Puzzle PuzzleFactory::puzzleFromString(string init){
+	Puzzle* PuzzleFactory::puzzleFromString(string init){
 		Puzzle *puzzle;
+		puzzle = new Puzzle;
 		return(puzzle);
 
 	}
 
-	Puzzle PuzzleFactory::puzzleFromStream(ifstream init){
+	Puzzle* PuzzleFactory::puzzleFromStream(ifstream& init){
 		Puzzle *puzzle;
+		puzzle = new Puzzle;
 		return(puzzle);
 	}
 
-	Puzzle defaultPuzzle(){
+	Puzzle* PuzzleFactory::defaultPuzzle(){
 		Puzzle *puzzle;
+		puzzle = new Puzzle;
 		return(puzzle);
 
 	}

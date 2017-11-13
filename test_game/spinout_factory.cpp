@@ -16,7 +16,7 @@ namespace cs427_527
 
 	}
 
-	Puzzle SpinOutFactory::puzzleFromString(string init){
+	Puzzle* SpinOutFactory::puzzleFromString(string init){
 		Puzzle *puzzle;
 		puzzle = new SpinOut(init);
 
@@ -24,14 +24,14 @@ namespace cs427_527
 
 	}
 
-	Puzzle SpinOutFactory::puzzleFromStream(ifstream init){
-		Puzzle *puzzle;
-		puzzle = new SpinOut(init);
+//	Puzzle* SpinOutFactory::puzzleFromStream(ifstream& init){
+//		Puzzle *puzzle;
+//		puzzle = new SpinOut(init);
+//
+//		return(puzzle);
+//	}
 
-		return(puzzle);
-	}
-
-	Puzzle SpinOutFactory::defaultPuzzle(){
+	Puzzle* SpinOutFactory::defaultPuzzle(){
 			Puzzle *puzzle;
 			puzzle = new SpinOut();
 

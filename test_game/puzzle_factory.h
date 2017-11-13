@@ -27,11 +27,11 @@ namespace cs427_527
 
 		virtual ~PuzzleFactory();
 
-		virtual Puzzle puzzleFromString(string init);
+		virtual Puzzle* puzzleFromString(string init);
 
-		virtual Puzzle puzzleFromStream(ifstream init);
+		virtual Puzzle* puzzleFromStream(ifstream& init);
 
-		virtual Puzzle defaultPuzzle();
+		virtual Puzzle* defaultPuzzle();
 
 
 
