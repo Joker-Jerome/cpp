@@ -40,7 +40,7 @@ namespace cs427_527
 				    if (s[i] != '/' && s[i] != '-')
 				    {
 				        tmp_s = "///////";
-				        cout << "Input Invalid!"<< endl;
+				        //cout << "Input Invalid!"<< endl;
 						break;
 				    }
 			}
@@ -48,7 +48,7 @@ namespace cs427_527
 		else
 		{
 			tmp_s = "///////";
-			cout << "Input Invalid!"<< endl;
+			//cout << "Input Invalid!"<< endl;
 		}
 		for (int i = 0; i < 7; i++)
 		{

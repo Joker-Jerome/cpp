@@ -104,6 +104,10 @@ namespace cs427_527
 	 *  Destroys a conway object.
 	 */
 	Conway::~Conway(){
+//
+		for(int i = 0; i < rowNum;i++){
+			delete[] ary[i];
+		}
 		delete[] ary;
 
 	}

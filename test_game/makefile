@@ -1,6 +1,6 @@
 CXX = g++
-CXXFLAGS = -g -Wall -pedantic -std=c++11 -DCS527
+CXXFLAGS = -g -Wall -pedantic -std=c++11
 
-Game: game_main.o puzzle.o conway.o spinout.o puzzle_move.o puzzle_factory.o conway_factory.o spinout_factory.o
+Game: game_main.o puzzle.o conway.o spinout.o puzzle_move.o
 	${CXX} ${CXXFLAGS} -o $@ $^
 
