@@ -41,6 +41,10 @@ namespace cs427_527
         virtual PuzzleMove* readMove(istream& input);
 		virtual bool isLegalMove(PuzzleMove *curMove) const;
 
+		friend ostream& operator<<(ostream& output, const SpinOut& obj);
+		virtual void print(ostream& output) const;
+
+
 		/**
 		 * 	Rotates the indicated disk if the
 		 * 	move is legal.

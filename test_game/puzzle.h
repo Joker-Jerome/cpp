@@ -25,25 +25,27 @@ namespace cs427_527
 		/**
 		 * Creates a puzzle object
 		 */
-		Puzzle(istream& s);
+		//Puzzle(istream& s);
 
 		/**
 		 * copy constructor.
 		 */
-		Puzzle(const Puzzle& obj);
+		//Puzzle(const Puzzle& obj);
 		/**
 		 * move constructor.
 		 */
-		Puzzle(Puzzle &&rhs);
+		//Puzzle(Puzzle &&rhs);
 
 		/**
 		 *  Destroys a puzzle object.
 		 */
 		virtual ~Puzzle();
 
-		Puzzle& operator=(const Puzzle &rhs);
-		Puzzle& operator=(Puzzle &&rhs);
-		friend ostream& operator<<(ostream& output, const Puzzle& obj);
+//		Puzzle& operator=(const Puzzle &rhs);
+//		Puzzle& operator=(Puzzle &&rhs);
+		friend  ostream& operator<<(ostream& output, const Puzzle& obj);
+		virtual void print(ostream& output) const;
+
 		/**
 		 *  Takes four integers 
 		 *  and determines whether the move is legal.
@@ -71,8 +73,8 @@ namespace cs427_527
 		virtual bool isSolved() const;
 
 	private:
-		int rowNum,colNum;
-		char** ary;
+//		int rowNum,colNum;
+//		char** ary;
 		int totalCounts;
 
 

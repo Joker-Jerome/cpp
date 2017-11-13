@@ -186,13 +186,14 @@ namespace cs427_527
 		fromC = curMove->moveVec[1];
 		toR = curMove->moveVec[2];
 		toC = curMove->moveVec[3];
-			this->ary[fromR][fromC] = '.';
-			this->ary[toR][toC] = 'X';
-			this->ary[(fromR+toR)/2][(fromC+toC)/2] = '.';
-			this->totalCounts++;
+		this->ary[fromR][fromC] = '.';
+		this->ary[toR][toC] = 'X';
+		this->ary[(fromR+toR)/2][(fromC+toC)/2] = '.';
+		this->totalCounts++;
+		//cout << "make some changes" << endl;
 		//	}
 		}
-		delete curMove;
+
 
 	}
 
@@ -278,6 +279,20 @@ namespace cs427_527
 			}
 	         return output;
 	      }
+
+	void Conway::print(ostream& output) const
+	{
+
+		for (int i = 0; i < this->rowNum; i++) {
+					for (int j = 0; j < this->colNum; j++) {
+						output << this->ary[i][j];
+					}
+					output << endl;
+				}
+
+		      }
+
+
 
 
 }

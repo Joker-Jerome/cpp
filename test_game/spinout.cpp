@@ -24,6 +24,7 @@ namespace cs427_527
 		//oriSeq = {'/','/','/','/','/','/','/','\0'};
 		//currSeq = {'/','/','/','/','/','/','/','\0'};
 		totalCounts = 0;
+		//cout << "spinout constructor" << endl;
 	}
 
 	/**
@@ -145,9 +146,9 @@ namespace cs427_527
 			this->totalCounts += 1;
 		} else {
      // cout << "illegal move" << endl;
-    }
-		delete curMove;
 
+    }
+		//std::cout << this->toString() << std::endl;
 
 
 	}
@@ -184,6 +185,13 @@ namespace cs427_527
 		string str(this->currSeq);
 		return str.substr(0,7);
 	}
+
+	void SpinOut::print(ostream& output) const
+		{
+
+			output << this->toString();
+
+		 }
 
 
 }

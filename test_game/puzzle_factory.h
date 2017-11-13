@@ -1,21 +1,46 @@
-#ifndef __FACTORY_H__
-#define __FACTORY_H__
+#ifndef __PUZZLE_FACTORY_H__
+#define __PUZZLE_FACTORY_H__
 
-#include <memory>
-
+#include <istream>
+#include <sstream>
+#include <string>
+#include <fstream>
+#include <cstring>
+#include <cstdlib>
+#include <cmath>
+#include "puzzle_move.h"
 #include "puzzle.h"
+
+using namespace std;
+using cs427_527::PuzzleMove;
 
 namespace cs427_527
 {
-  
-  class PlayerFactory
-  {
-  public:
-    virtual ~PlayerFactory() {}
-    virtual std::shared_ptr<Player> makeAggressive() = 0;
-    virtual std::shared_ptr<Player> makeConservative() = 0;
-    virtual std::shared_ptr<Player> makeDefault() = 0;
-  };
+	class PuzzleFactory
+	{
+	public:
+	    /**
+	     * Creates a puzzle object.
+	     */
+		PuzzleFactory();
+
+
+		virtual ~PuzzleFactory();
+
+		virtual Puzzle puzzleFromString(string init);
+
+		virtual Puzzle puzzleFromStream(ifstream init);
+
+		virtual Puzzle defaultPuzzle();
+
+
+
+
+	};
 
 }
-#endif
+
+
+
+
+#endif /* CONWAY_H_ */

@@ -98,7 +98,7 @@ int play(Puzzle *puzzle, int argc, char **argv)
 	  if (puzzle->isLegalMove(move))
 	    {
 	      puzzle->makeMove(move);
-	      
+
 	      std::cout << *puzzle << std::endl;
 	    }
 	  else
@@ -133,6 +133,7 @@ int main(int argc, char **argv)
   try
     {
       Puzzle *puzzle;
+
 #ifdef CS527
       PuzzleFactory *factory;
 
@@ -182,6 +183,7 @@ int main(int argc, char **argv)
 	  else
 	    {
 	      puzzle = new SpinOut();
+
 	    }
 	}
       else if (strcmp(argv[1], "conway") == 0)

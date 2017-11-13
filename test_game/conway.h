@@ -37,6 +37,7 @@ namespace cs427_527
 		Conway& operator=(const Conway &rhs);
 		Conway& operator=(Conway &&rhs);
 		friend ostream& operator<<(ostream& output, const Conway& obj);
+		virtual void print(ostream& output) const;
 		/**
 		 *  Takes four integers 
 		 *  and determines whether the move is legal.

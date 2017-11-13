@@ -1,6 +1,6 @@
 
-#ifndef SRC_PUZZLE_MOVE_H_
-#define SRC_PUZZLE_MOVE_H_
+#ifndef __PUZZLE_MOVE_H__
+#define __PUZZLE_MOVE_H__
 
 #include <iostream>
 #include <fstream>
