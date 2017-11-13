@@ -32,7 +32,11 @@ namespace cs427_527
 	ostream& operator <<(ostream& output,PuzzleMove CurMove) {
 
 				for(int i = 0; i<CurMove.moveVec.size();i++) {
-					output << CurMove.moveVec[i] << " ";
+					if (i != (CurMove.moveVec.size()-1)) {
+						output << CurMove.moveVec[i] << " ";
+					} else {
+						output << CurMove.moveVec[i];
+					}
 				}
 				return(output);
 
