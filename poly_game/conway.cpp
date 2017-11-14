@@ -107,46 +107,92 @@ namespace cs427_527
 		delete[] ary;
 
 	}
+	PuzzleMove* Conway::readMove(istringstream& input){
+		int dim = 4;
+		int tmpVal = 0;
 
+		vector<int> tmpVec;
+		for(int i = 0; i < dim; i++) {
+			input >> tmpVal;
+			tmpVec.push_back(tmpVal);
+		}
+
+		PuzzleMove *tmpMove = new PuzzleMove(tmpVec);
+		return(tmpMove);
+	}
+
+	PuzzleMove* Conway::readMove(istream& input){
+			int dim = 4;
+			int tmpVal = 0;
+
+			vector<int> tmpVec;
+			for(int i = 0; i < dim; i++) {
+				input >> tmpVal;
+				tmpVec.push_back(tmpVal);
+			}
+
+			PuzzleMove *tmpMove = new PuzzleMove(tmpVec);
+			return(tmpMove);
+		}
 	/**
 	 *  Takes four integers 
 	 *  and determine whether the move is legal.
 	 */
-	bool Conway::isLegalMove(int fromR, int fromC, int toR, int toC) const
+	bool Conway::isLegalMove(PuzzleMove *curMove) const
 	{
-		// evaluate the input
-		if (fromR >= this->rowNum || toR >= this->rowNum || fromC >= this->colNum || toC >= this->colNum) {
-			return(0);
-		} else if (fromR < 0 || toR < 0 || fromC < 0 || toC < 0) {
-			return(0);
-		} else if (this->ary[fromR][fromC] != 'X' || this->ary[toR][toC] == 'X' ) {
-			return(0);
-		} else if ((abs(fromR-toR) == 2 && (fromC == toC)) || (abs(fromC-toC) == 2 && (fromR == toR))) {
-			if (this->ary[(fromR+toR)/2][(fromC+toC)/2] == 'X') {
-				return(1);
+			if (curMove->moveVec.size() == 4) {
+			int fromR, fromC, toR, toC;
+
+			fromR = curMove->moveVec[0];
+			fromC = curMove->moveVec[1];
+			toR = curMove->moveVec[2];
+			toC = curMove->moveVec[3];
+
+			// evaluate the input
+			if (fromR >= this->rowNum || toR >= this->rowNum || fromC >= this->colNum || toC >= this->colNum) {
+				return(0);
+			} else if (fromR < 0 || toR < 0 || fromC < 0 || toC < 0) {
+				return(0);
+			} else if (this->ary[fromR][fromC] != 'X' || this->ary[toR][toC] == 'X' ) {
+				return(0);
+			} else if ((abs(fromR-toR) == 2 && (fromC == toC)) || (abs(fromC-toC) == 2 && (fromR == toR))) {
+				if (this->ary[(fromR+toR)/2][(fromC+toC)/2] == 'X') {
+					return(1);
+				} else {
+					return(0);
+				}
 			} else {
 				return(0);
 			}
-		} else {
-			return(0);
-		}
+			}
+			else return(0);
 
-	}
+		}
 
 	/**
 	 * 	Makes move if the
 	 * 	move is legal.
 	 */
-	void Conway::makeMove(int fromR, int fromC, int toR, int toC) {
+	void Conway::makeMove(PuzzleMove *curMove) {
 		//bool legal = this->isLegalMove(fromR, fromC, toR, toC);
 		//if (legal == 0) {
 		//	cout << "illegal move" << endl;
 		//} else {
+		if (curMove->moveVec.size() == 4) {
+
+		int fromR, fromC, toR, toC;
+
+		fromR = curMove->moveVec[0];
+		fromC = curMove->moveVec[1];
+		toR = curMove->moveVec[2];
+		toC = curMove->moveVec[3];
 			this->ary[fromR][fromC] = '.';
 			this->ary[toR][toC] = 'X';
 			this->ary[(fromR+toR)/2][(fromC+toC)/2] = '.';
 			this->totalCounts++;
 		//	}
+		}
+		delete curMove;
 
 	}
 

@@ -104,16 +104,51 @@ namespace cs427_527
 	 *  Destroys a puzzle object.
 	 */
 	Puzzle::~Puzzle(){
-		delete[] ary;
 
 	}
+
+	PuzzleMove* Puzzle::readMove(istringstream& input){
+		int dim = 1;
+		int tmpVal = 0;
+
+		vector<int> tmpVec;
+		for(int i = 0; i < dim; i++) {
+			input >> tmpVal;
+			tmpVec.push_back(tmpVal);
+		}
+
+		PuzzleMove *tmpMove = new PuzzleMove(tmpVec);
+		return(tmpMove);
+	}
+
+	PuzzleMove* Puzzle::readMove(istream& input){
+			int dim = 1;
+			int tmpVal = 0;
+
+			vector<int> tmpVec;
+			for(int i = 0; i < dim; i++) {
+				input >> tmpVal;
+				tmpVec.push_back(tmpVal);
+			}
+
+			PuzzleMove *tmpMove = new PuzzleMove(tmpVec);
+			return(tmpMove);
+		}
 
 	/**
 	 *  Takes four integers 
 	 *  and determine whether the move is legal.
 	 */
-	bool Puzzle::isLegalMove(int fromR, int fromC, int toR, int toC) const
+	bool Puzzle::isLegalMove(PuzzleMove *curMove) const
 	{
+		if (curMove->moveVec.size() == 4) {
+		int fromR, fromC, toR, toC;
+
+		fromR = curMove->moveVec[0];
+		fromC = curMove->moveVec[1];
+		toR = curMove->moveVec[2];
+		toC = curMove->moveVec[3];
+
 		// evaluate the input
 		if (fromR >= this->rowNum || toR >= this->rowNum || fromC >= this->colNum || toC >= this->colNum) {
 			return(0);
@@ -130,6 +165,8 @@ namespace cs427_527
 		} else {
 			return(0);
 		}
+		}
+		else return(0);
 
 	}
 
@@ -137,15 +174,24 @@ namespace cs427_527
 	 * 	Makes move if the
 	 * 	move is legal.
 	 */
-	void Puzzle::makeMove(int fromR, int fromC, int toR, int toC) {
+	void Puzzle::makeMove(PuzzleMove *curMove) {
 		//bool legal = this->isLegalMove(fromR, fromC, toR, toC);
 		//if (legal == 0) {
 		//	cout << "illegal move" << endl;
 		//} else {
+		if (curMove->moveVec.size() == 4) {
+			int fromR, fromC, toR, toC;
+
+			fromR = curMove->moveVec[0];
+			fromC = curMove->moveVec[1];
+			toR = curMove->moveVec[2];
+			toC = curMove->moveVec[3];
 			this->ary[fromR][fromC] = '.';
 			this->ary[toR][toC] = 'X';
 			this->ary[(fromR+toR)/2][(fromC+toC)/2] = '.';
 			this->totalCounts++;
+		}
+		delete curMove;
 		//	}
 
 	}

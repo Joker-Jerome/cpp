@@ -39,7 +39,7 @@ namespace cs427_527
 		/**
 		 *  Destroys a puzzle object.
 		 */
-		~Puzzle();
+		virtual ~Puzzle();
 
 		Puzzle& operator=(const Puzzle &rhs);
 		Puzzle& operator=(Puzzle &&rhs);
@@ -48,14 +48,16 @@ namespace cs427_527
 		 *  Takes four integers 
 		 *  and determines whether the move is legal.
 		 */
-    virtual PuzzleMove readMove(istringstream& input);
-		virtual bool isLegalMove(int fromR, int fromC, int toR, int toC) const;
+        virtual PuzzleMove* readMove(istringstream& input);
+        virtual PuzzleMove* readMove(istream& input);
+
+		virtual bool isLegalMove(PuzzleMove *curMove) const;
 
 		/**
 		 * 	Makes the move if the
 		 * 	move is legal.
 		 */
-		virtual void makeMove(int fromR, int fromC, int toR, int toC);
+		virtual void makeMove(PuzzleMove *curMove);
 
 		/**
 		 * 	Counts the total moves.

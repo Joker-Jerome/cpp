@@ -65,13 +65,43 @@ namespace cs427_527
 	SpinOut::~SpinOut(){
 		//cout << "Exit" << endl;
 	}
+	PuzzleMove* SpinOut::readMove(istringstream& input){
+		int dim = 1;
+		int tmpVal = 0;
 
+		vector<int> tmpVec;
+		for(int i = 0; i < dim; i++) {
+			input >> tmpVal;
+			tmpVec.push_back(tmpVal);
+		}
+
+		PuzzleMove *tmpMove = new PuzzleMove(tmpVec);
+		return(tmpMove);
+	}
+
+	PuzzleMove* SpinOut::readMove(istream& input){
+			int dim = 1;
+			int tmpVal = 0;
+
+			vector<int> tmpVec;
+			for(int i = 0; i < dim; i++) {
+				input >> tmpVal;
+				tmpVec.push_back(tmpVal);
+			}
+
+			PuzzleMove *tmpMove = new PuzzleMove(tmpVec);
+			return(tmpMove);
+		}
 	/**
 	 *  Takes an integer between 0 and 6
 	 *  and determine whether is legal.
 	 */
-	bool SpinOut::isLegalMove(int i) const
+	bool SpinOut::isLegalMove(PuzzleMove *curMove) const
 	{
+		if (curMove->moveVec.size() == 1) {
+		int i;
+		i = curMove->moveVec[0];
+
 		string tmpSeq(this->currSeq);
 		int flag = 0;
 		if ( i != 6) {
@@ -92,6 +122,8 @@ namespace cs427_527
 		} else {
 			return 0;
 		}
+		}
+		return 0;
 
 	}
 
@@ -99,9 +131,12 @@ namespace cs427_527
 	 * 	Rotates the indicated disk if the
 	 * 	move is legal.
 	 */
-	void SpinOut::makeMove(int i) {
-		bool legal = this->isLegalMove(i);
-		if (legal == 1) {
+	void SpinOut::makeMove(PuzzleMove *curMove) {
+
+		if (curMove->moveVec.size() == 1) {
+			int i;
+			i = curMove->moveVec[0];
+
 			if (this->currSeq[i] == '/') {
 				this->currSeq[i] = '-';
 			} else {
@@ -111,6 +146,8 @@ namespace cs427_527
 		} else {
      // cout << "illegal move" << endl;
     }
+		delete curMove;
+
 
 
 	}

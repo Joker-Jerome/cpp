@@ -7,11 +7,10 @@
 #ifndef __SPINOUT_H__
 #define __SPINOUT_H__
 
-#include <iostream>
-#include <string>
-#include <sstream>
+#include "puzzle.h"
 
 using namespace std;
+
 
 namespace cs427_527
 {
@@ -38,24 +37,26 @@ namespace cs427_527
 		 *  Takes an integer between 0 and 6
 		 *  and determine whether is legal.
 		 */
-		bool isLegalMove(int i) const;
+		virtual PuzzleMove* readMove(istringstream& input);
+        virtual PuzzleMove* readMove(istream& input);
+		virtual bool isLegalMove(PuzzleMove *curMove) const;
 
 		/**
 		 * 	Rotates the indicated disk if the
 		 * 	move is legal.
 		 */
-		void makeMove(int i);
+		virtual void makeMove(PuzzleMove *curMove);
 
 		/**
 		 * 	Counts the total moves.
 		 */
-		int totalMoves() const;
+		virtual int totalMoves() const;
 
 		/**
 		 * 	Determines if the current object
 		 * 	is in its solved configuration.
 		 */
-		bool isSolved() const;
+		virtual bool isSolved() const;
 
 		/**
 		 * 	Returns a string representation of
