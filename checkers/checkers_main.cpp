@@ -57,7 +57,6 @@ int main(int argc, char **argv)
       return 1;
     }
 
-  int skipArgs = 2;
 
   try
     {
