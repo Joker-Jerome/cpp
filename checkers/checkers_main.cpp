@@ -64,11 +64,11 @@ int main(int argc, char **argv)
       CheckerBoard board;
 
       // play the game
-      if (board != nullptr)
+      if (board != NULL)
 	{
 	  int result = play(board);
 
-	  delete board;
+	  //delete board;
 
 	  return result;
 	}
