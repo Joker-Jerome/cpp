@@ -3,6 +3,7 @@
 #include <iostream>
 #include <sstream>
 
+
 #include "checkerboard.h"
 #include "checker.h"
 
@@ -11,7 +12,7 @@
 namespace cs427_527
 {
   CheckerBoard::CheckerBoard()
-    : board(8, std::vector<std::shared_ptr<Checker>>(8, nullptr)),
+    : board(8, std::vector<std::shared_ptr<Piece>>(8, nullptr)),
       width(8),
       height(8),
       turn(0),
@@ -30,8 +31,18 @@ namespace cs427_527
 	for (int c = r % 2; c < width; c += 2)
 	  {
 	    board[r][c] = std::make_shared<Checker>(1, r, c);
+	    //Piece *pp = new Checker(1,r,c);
+	    //Checker *pc = dynamic_cast<Checker *>(pp);
+	    //std::cout << pc->getPlayer() << std::endl;
+
+	    //Checker *pc = dynamic_cast<Checker *> (board[r][c]);
+	    //std::shared_ptr<Checker> pc = std::dynamic_pointer_cast<std::shared_ptr<Checker>> (board[r][c]);
+	    //Checker *pc = board[r][c];
+	    //std::cout << board[r][c]->getPlayer() << std::endl;
+
 	  }
       }
+    //	std::cout << "checkerboard constructor" << std::endl;
   }
 
   CheckerBoard::~CheckerBoard()
@@ -48,7 +59,7 @@ namespace cs427_527
     return height;
   }
 
-  std::shared_ptr<Checker> CheckerBoard::getPiece(int r, int c)
+  std::shared_ptr<Piece> CheckerBoard::getPiece(int r, int c)
   {
     if (inBounds(r, c))
       {
@@ -60,7 +71,7 @@ namespace cs427_527
       }
   }
 
-  std::shared_ptr<const Checker> CheckerBoard::getPiece(int r, int c) const
+  std::shared_ptr<const Piece> CheckerBoard::getPiece(int r, int c) const
   {
     if (inBounds(r, c))
       {
@@ -80,7 +91,7 @@ namespace cs427_527
       }
   }
 
-  void CheckerBoard::placePiece(int r, int c, std::shared_ptr<Checker> p)
+  void CheckerBoard::placePiece(int r, int c, std::shared_ptr<Piece> p)
   {
     if (inBounds(r, c))
       {
@@ -88,15 +99,15 @@ namespace cs427_527
       }
   }
 
-  CheckerBoard::Color CheckerBoard::getBoardColor(int r, int c) const
+  PieceBoard::Color CheckerBoard::getBoardColor(int r, int c) const
   {
     if (r % 2 == c % 2)
       {
-	return Color::RED;
+	return PieceBoard::Color::RED;
       }
     else
       {
-	return Color::BLACK;
+	return PieceBoard::Color::BLACK;
       }
   }
 
@@ -120,7 +131,7 @@ namespace cs427_527
 	int distance = findLongestMove();
 	
 	// move is legal if is moves current player's checker legally
-	std::shared_ptr<const Checker> moving = getPiece(fromR, fromC);
+	std::shared_ptr<const Piece> moving = getPiece(fromR, fromC);
 	return (imax(iabs(fromR - toR), iabs(fromC - toC)) == distance
 		&& moving != nullptr
 		&& moving->getPlayer() == turn
@@ -133,16 +144,19 @@ namespace cs427_527
     int longest = 0;
     for (int fromR = 0; fromR < height; fromR++)
       {
+
 	for (int fromC = 0; fromC < width; fromC++)
 	  {
 	    if (getPiece(fromR, fromC) != nullptr
 		&& getPiece(fromR, fromC)->getPlayer() == turn)
 	      {
 		longest = imax(longest, findLongestMove(fromR, fromC));
-	        std::cout << "longest" << longest << std::endl;
-		 }
+		//std::cout << "longest" << longest << std::endl;
+	      }
+
 	  }
       }
+    std::cout << longest << std::endl;
     return longest;
   }
 
@@ -153,11 +167,18 @@ namespace cs427_527
       {
 	for (int toC = 0; toC < width; toC++)
 	  {
-	    if (distance(fromR, fromC, toR, toC) > longest
+		//std::cout << distance(fromR, fromC, toR, toC) << std::endl;
+		//if (getPiece(fromR, fromC)->getPlayer() != 0 ){
+		//std::cout << getPiece(fromR, fromC)->getPlayer() << std::endl;
+		//}
+		//std::cout <<getPiece(fromR, fromC)->isLegalMove(*this, toR, toC) << std::endl;
+		if (distance(fromR, fromC, toR, toC) > longest
 		&& getPiece(fromR, fromC)->isLegalMove(*this, toR, toC))
 	      {
 		longest = distance(fromR, fromC, toR, toC);
+	 	//std::cout << "legal!" <<longest << std::endl;
 	      }
+
 	  }
       }
     return longest;
@@ -167,7 +188,7 @@ namespace cs427_527
   {
     if (isLegalMove(fromR, fromC, toR, toC))
       {
-	std::shared_ptr<Checker> moving = getPiece(fromR, fromC);
+	std::shared_ptr<Piece> moving = getPiece(fromR, fromC);
 	moving->makeMove(*this, toR, toC);
 
 	// check if further jumps available
@@ -207,7 +228,7 @@ namespace cs427_527
 	  {
 	    if (getPiece(r, c) == nullptr)
 	      {
-		if (getBoardColor(r, c) == Color::RED)
+		if (getBoardColor(r, c) == PieceBoard::Color::RED)
 		  {
 		    os << "..";
 		  }
@@ -232,9 +253,9 @@ namespace cs427_527
     return r >= 0 && r < height && c >= 0 && c < width;
   }
   
-  std::ostream& operator<<(std::ostream& os, const CheckerBoard &board)
-  {
-    return os << board.toString();
-  }
+  //std::ostream& operator<<(std::ostream& os, const PieceBoard &board)
+  //{
+    //return os << board.toString();
+  //}
 }
 
