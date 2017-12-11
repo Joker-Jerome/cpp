@@ -1,0 +1,9 @@
+ESTIMATE of time to complete assignment: 17 hours
+
+              15:00  TOTAL time spent
+
+I discussed my solution with: stackoverflow
+
+Discussion:
+1. When I first looked at this assignment, I got so confused. It seemed that I should just slightly change the code I can submit the assignment and make it run and past all the tests very quickly. However, when I tried to write two base classes and made them as flexible as possible. I kind of got stuckand I came to realize this is a huge project which required lots of thinking and designs. The hardest thing is that I don't even know what the next assignment look like. Therefore my solution is that there must be pieces and the board.
+2. It's a little be confusing when I tried to use downcasting since when I tried to apply it to shared_ptr it seemed to no work properly like raw pointers. Another problem is the initialization list, I spent some time to figure out how it actually work in derived class.
