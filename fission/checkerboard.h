@@ -123,6 +123,13 @@ namespace cs427_527
     virtual bool gameOver() const;
 
     /**
+        * Determines if the game on this board is draw.
+        *
+        * @return true if and only if the game is draw
+        */
+    virtual bool isDraw() const;
+
+    /**
      * Returns a printable representation of this board.
      *
      * @return a printable representation of this board

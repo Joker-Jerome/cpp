@@ -4,14 +4,85 @@
 #include <memory>
 #include <sstream>
 #include <string>
+#include <fstream>
 
 #include "checkerboard.h"
+#include "piece.h"
+
 
 using cs427_527::CheckerBoard;
+using cs427_527::PieceBoard;
 
+
+void outputHTML(CheckerBoard &b) {
+
+	std::ofstream fo;
+	std::string colBoard;
+	std::string colPiece;
+	int light;
+
+	fo.open("fission_output.html");
+
+	fo <<  	"<!DOCTYPE html>\n"
+			<<"<html>\n"
+			<<"<head>\n"
+			<<"<meta charset=" << "\"UTF-8\"" << ">\n"
+			<<"<title>Fission</title>\n"
+			<<"</head>\n"
+			<<"<body>\n"
+			<< "<canvas id=" <<"\"board\"" << "width=" << "\"" << 20*b.getWidth() << "height=" << "\"" << 20*b.getHeight() << "\"" << "></canvas>\n"
+			<<"<script>\n"
+			<<"var canvas = document.getElementById('board');\n"
+			<<"var g = canvas.getContext('2d');\n";
+
+	// draw the board
+	for (int j = 0; j < b.getHeight(); j++) {
+		for (int i = 0; i < b.getWidth(); i++) {
+
+			if (b.getBoardColor(i, j) == PieceBoard::Color::RED) {
+				colBoard = "#FFFFFF";
+			} else {
+				colBoard = "#808080";
+			}
+			fo << "g.fillStyle = '" << colBoard << "';" << std::endl;
+			fo << "g.fillRect("<< i*20 << "," << j*20 << ", 20, 20);" << std::endl;
+		}
+	}
+
+	// draw the pieces
+
+	for (int j = 0; j < b.getHeight(); j++){
+			for (int i = 0; i < b.getWidth(); i++) {
+				if (b.getPiece(i, j) != nullptr) {
+					if (b.getPiece(i, j)->getPlayer() == 0) {
+						colPiece = "#FF0000";
+					} else {
+						colPiece = "#0000FF";
+					}
+					if (b.getPiece(i, j)->getLight()) {
+						light = 5;
+					} else {
+						light = 8;
+					}
+
+					fo <<"g.beginPath();" << std::endl;
+					fo << "g.arc(" << std::to_string(10+20*i) << "," << std::to_string(10+20*j) << "," << light <<", 0, 2*Math.PI);" << std::endl;
+					fo << "g.fillStyle = '" << colPiece << "';" << std::endl;
+					fo << "g.fill();" << std::endl;
+				}
+		}
+	}
+	fo << "</script>\n" << "</body>\n" << "</html>\n";
+
+
+	fo.close();
+
+
+}
 
 void play(CheckerBoard &b) {
-	while (!b.gameOver() && std::cin)
+	// game is going on
+	while (!b.gameOver() && !b.isDraw() && std::cin)
 	    {
 	      std::cout << "PLAYER " << b.getCurrentPlayer() << std::endl;
 	      std::string move;
@@ -21,15 +92,15 @@ void play(CheckerBoard &b) {
 		  int fromR, fromC, toR, toC;
 		  if (in >> fromR >> fromC >> toR >> toC)
 		    {
-		      if (b.isLegalMove(fromR, fromC, toR, toC))
-			{
-		    	  b.makeMove(fromR, fromC, toR, toC);
-			  std::cout << b;
-			}
-		      else
-			{
-			  std::cout << "illegal move" << std::endl;
-			}
+				  if (b.isLegalMove(fromR, fromC, toR, toC))
+				{
+					  b.makeMove(fromR, fromC, toR, toC);
+				  std::cout << b;
+				}
+				  else
+				{
+				  std::cout << "illegal move" << std::endl;
+				}
 		    }
 		  else
 		    {
@@ -37,11 +108,20 @@ void play(CheckerBoard &b) {
 		    }
 		}
 	    }
+		// game is over
 	  if (b.gameOver())
 	    {
 	      std::cout << (b.getCurrentPlayer() + 1) % 2 << " wins" << std::endl;
 	    }
+	  	 // game is draw
+	  if (b.isDraw())
+		{
+		  std::cout << "Draw" << std::endl;
+		}
+	  outputHTML(b);
 }
+
+
 
 
 int main(int argc, char **argv)
