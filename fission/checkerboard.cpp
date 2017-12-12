@@ -246,12 +246,17 @@ namespace cs427_527
 	int countCurrent = 0;
 	int countOpponent = 0;
 	int currentPlayer = getCurrentPlayer();
+	//std::cout << "check1" << std::endl;
 	for (int i = 0; i < height; i++) {
 		for (int j = 0; j < width; j++) {
-			if (getPiece(i,j)->player == currentPlayer) {
-				countCurrent++;
-			} else (getPiece(i,j)->player == (1-currentPlayer)) {
-				countOpponent++;
+			if (getPiece(i,j) != nullptr) {
+				if (getPiece(i,j)->getPlayer() == currentPlayer) {
+					countCurrent++;
+					//std::cout << "check2" << std::endl;
+				} else if (getPiece(i,j)->getPlayer() == (1-currentPlayer)) {
+					countOpponent++;
+					//std::cout << "check3" << std::endl;
+				}
 			}
 
 		}
@@ -260,7 +265,7 @@ namespace cs427_527
 		std::cout << "Player" << currentPlayer << " won" << std::endl;
 		return true;
 	} else if (countCurrent > 0 && countOpponent ==  0){
-		std::cout << "Player" << std::string(1-currentPlayer) << " won" << std::endl;
+		std::cout << "Player" << std::to_string(1-currentPlayer) << " won" << std::endl;
 		return true;
 	}
     return false;
