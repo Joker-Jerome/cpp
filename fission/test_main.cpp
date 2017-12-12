@@ -66,7 +66,7 @@ void outputHTML(CheckerBoard &b) {
 					}
 
 					fo <<"g.beginPath();" << std::endl;
-					fo << "g.arc(" << std::to_string(10+20*i) << "," << std::to_string(10+20*j) << "," << light <<", 0, 2*Math.PI);" << std::endl;
+					fo << "g.arc(" << std::to_string(10+20*i) << ", " << std::to_string(10+20*j) << ", " << light <<", 0, 2*Math.PI);" << std::endl;
 					fo << "g.fillStyle = '" << colPiece << "';" << std::endl;
 					fo << "g.fill();" << std::endl;
 				}
