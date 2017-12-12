@@ -30,7 +30,7 @@ void outputHTML(CheckerBoard &b) {
 			<<"<title>Fission</title>\n"
 			<<"</head>\n"
 			<<"<body>\n"
-			<< "<canvas id=" <<"\"board\"" << "width=" << "\"" << 20*b.getWidth() << "height=" << "\"" << 20*b.getHeight() << "\"" << "></canvas>\n"
+			<< "<canvas id=" <<"\"board\" " << "width=" << "\"" << 20*b.getWidth() << "\"" << "height=" << "\"" << 20*b.getHeight() << "\"" << "></canvas>\n"
 			<<"<script>\n"
 			<<"var canvas = document.getElementById('board');\n"
 			<<"var g = canvas.getContext('2d');\n";
@@ -45,7 +45,7 @@ void outputHTML(CheckerBoard &b) {
 				colBoard = "#808080";
 			}
 			fo << "g.fillStyle = '" << colBoard << "';" << std::endl;
-			fo << "g.fillRect("<< i*20 << "," << j*20 << ", 20, 20);" << std::endl;
+			fo << "g.fillRect("<< i*20 << ", " << j*20 << ", 20, 20);" << std::endl;
 		}
 	}
 
