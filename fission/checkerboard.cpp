@@ -74,7 +74,7 @@ namespace cs427_527
 
   }
 
-  CheckerBoard::CheckerBoard(int row,int col)
+  CheckerBoard::CheckerBoard(int col,int row)
       : board(row, std::vector<std::shared_ptr<Piece>>(col, nullptr)),
         width(col),
         height(row),
