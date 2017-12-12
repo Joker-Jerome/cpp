@@ -36,16 +36,16 @@ void outputHTML(CheckerBoard &b) {
 			<<"var g = canvas.getContext('2d');\n";
 
 	// draw the board
-	for (int j = 0; j < b.getHeight(); j++) {
-		for (int i = 0; i < b.getWidth(); i++) {
 
-			if (b.getBoardColor(i, j) == PieceBoard::Color::RED) {
+	for (int i = 0; i < b.getWidth(); i++) {
+		for (int j = 0; j < b.getHeight(); j++) {
+			if (b.getBoardColor(j, i) == PieceBoard::Color::RED) {
 				colBoard = "#FFFFFF";
 			} else {
 				colBoard = "#808080";
 			}
 			fo << "g.fillStyle = '" << colBoard << "';" << std::endl;
-			fo << "g.fillRect("<< i*20 << ", " << j*20 << ", 20, 20);" << std::endl;
+			fo << "g.fillRect("<<j*20 << ", " << i*20 << ", 20, 20);" << std::endl;
 		}
 	}
 
@@ -53,13 +53,13 @@ void outputHTML(CheckerBoard &b) {
 
 	for (int j = 0; j < b.getHeight(); j++){
 			for (int i = 0; i < b.getWidth(); i++) {
-				if (b.getPiece(i, j) != nullptr) {
-					if (b.getPiece(i, j)->getPlayer() == 0) {
+				if (b.getPiece(j, i) != nullptr) {
+					if (b.getPiece(j, i)->getPlayer() == 0) {
 						colPiece = "#FF0000";
 					} else {
 						colPiece = "#0000FF";
 					}
-					if (b.getPiece(i, j)->getLight()) {
+					if (b.getPiece(j, i)->getLight()) {
 						light = 5;
 					} else {
 						light = 8;
