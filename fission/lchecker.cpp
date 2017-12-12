@@ -24,7 +24,7 @@ namespace cs427_527
 
   std::string LChecker::toString() const
   {
-    return (player == 0 ? "bb" : "rr");
+    return (player == 1 ? "bb" : "rr");
   }
 
   bool LChecker::getLight() const
