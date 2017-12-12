@@ -79,6 +79,9 @@ namespace cs427_527
   { 
     // destination must be empty
 	// the path should be empty
+	if(row == toR && col == toC) {
+		return false;
+	}
     return((isStopOnEdge(board, toR, toC))|| (isClosePiece(board, toR, toC)));
   }
   
@@ -206,8 +209,8 @@ namespace cs427_527
 		} else {
 			colMove = (toC - col)/iabs(toC - col);
 		}
-		std::cout << rowMove << std::endl;
-		std::cout << colMove << std::endl;
+		//std::cout << rowMove << std::endl;
+		//std::cout << colMove << std::endl;
 
 		for (int i = toR,j = toC; i != row && j != col ; i = i - rowMove, j = j - colMove){
 			//std::cout << i << j <<std::endl;
