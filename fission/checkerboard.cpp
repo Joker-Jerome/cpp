@@ -24,7 +24,7 @@ namespace cs427_527
       {
     	for (int c = r % 2; c < width; c += 2)
 	  {
-	    board[r][c] = std::make_shared<Checker>(1, r, c);
+	    board[r][c] = std::make_shared<Checker>(0, r, c);
 	  }
       }
 
@@ -32,7 +32,7 @@ namespace cs427_527
       {
 	for (int c = 1-(r % 2); c < width; c += 2)
 	  {
-	    board[r][c] = std::make_shared<Checker>(0, r, c);
+	    board[r][c] = std::make_shared<Checker>(1, r, c);
 
 	  }
       }
@@ -89,7 +89,7 @@ namespace cs427_527
         {
       	for (int c = r % 2; c < width; c += 2)
   	  {
-  	    board[r][c] = std::make_shared<Checker>(1- flag3, r, c);
+  	    board[r][c] = std::make_shared<Checker>(0 + flag3, r, c);
   	  }
         }
 
@@ -97,7 +97,7 @@ namespace cs427_527
         {
   	for (int c = 1-(r % 2); c < width; c += 2)
   	  {
-  	    board[r][c] = std::make_shared<Checker>(0+ flag3, r, c);
+  	    board[r][c] = std::make_shared<Checker>(1 - flag3, r, c);
 
   	  }
         }

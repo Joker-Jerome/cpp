@@ -228,7 +228,7 @@ namespace cs427_527
 
   std::string Checker::toString() const
   {
-    return (player == 0 ? "BB" : "RR");
+    return (player == 1 ? "BB" : "RR");
   }
 
   bool Checker::getLight() const
