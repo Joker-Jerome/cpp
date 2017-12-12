@@ -82,7 +82,7 @@ namespace cs427_527
         turn(0),
         jumping(nullptr)
     {
-	  int flag = height % 2;
+	  int flag = (height/2) % 2;
       for (int r = 0; r < height; r++)
         {
       	for (int c = r % 2; c < width; c += 2)
