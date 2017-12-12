@@ -123,7 +123,6 @@ namespace cs427_527
 			board.removePiece(rowNext, colNext);
 
 		} else {
-=
 			for (int i = toR-1;i < toR+2;i++){
 				for (int j = toC-1; j < toC+2;j++) {
 					if (board.inBounds(i,j)) {
