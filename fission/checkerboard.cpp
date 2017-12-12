@@ -19,6 +19,7 @@ namespace cs427_527
       turn(0),
       jumping(nullptr)
   {
+
     for (int r = 0; r < height; r++)
       {
     	for (int c = r % 2; c < width; c += 2)
@@ -81,11 +82,12 @@ namespace cs427_527
         turn(0),
         jumping(nullptr)
     {
+	  int flag = height % 2;
       for (int r = 0; r < height; r++)
         {
       	for (int c = r % 2; c < width; c += 2)
   	  {
-  	    board[r][c] = std::make_shared<Checker>(1, r, c);
+  	    board[r][c] = std::make_shared<Checker>(1- flag, r, c);
   	  }
         }
 
@@ -93,7 +95,7 @@ namespace cs427_527
         {
   	for (int c = 1-(r % 2); c < width; c += 2)
   	  {
-  	    board[r][c] = std::make_shared<Checker>(0, r, c);
+  	    board[r][c] = std::make_shared<Checker>(0+ flag, r, c);
 
   	  }
         }
