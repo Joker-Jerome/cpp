@@ -154,27 +154,7 @@ namespace cs427_527
 
   }
 
-  std::shared_ptr<Piece> Checker::promote() const
-  {
-    return std::make_shared<King>(player, row, col);
-  }
-  
-  bool Checker::checkPromote(const PieceBoard& board, int toR, int toC) const
-  {
-    return ((player == 0 && toR == board.getHeight() - 1)
-	    || (player == 1 && toR == 0));
 
-  }
-  
-  void Checker::jump(PieceBoard& board, int toR, int toC) const
-  {
-    board.removePiece((row + toR) / 2, (col + toC) / 2);
-  }
-
-  bool Checker::canMoveBackwards() const
-  {
-    return false;
-  }
 
   bool Checker::isLegalDistance(int d) const
   {

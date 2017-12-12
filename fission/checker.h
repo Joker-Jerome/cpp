@@ -104,44 +104,6 @@ namespace cs427_527
      */
     virtual bool isLegalDistance(int dist) const;
 
-    /**
-     * Returns whether this checker can move backwards.
-     *
-     * @return true if and only if this checker can move backwards
-     */
-    virtual bool canMoveBackwards() const;
-
-    /**
-     * Updates the given board to reflect the result of jumping this
-     * checker to the given location.
-     *
-     * @param board the board this checker is on
-     * @param toR the row of a position on that board diagonally two away
-     * from this checker's location
-     * @param toC the column of a position on that board diagonally two
-     * away from this checker's location
-     */
-    virtual void jump(PieceBoard& board, int toR, int toC) const;
-
-    /**
-     * Determines if this checker is promoted if moving to the given
-     * location.
-     *
-     * @param board the board this checker is on
-     * @param toR a row on that board
-     * @param toC a column on that board
-     * @return true if this checker is promoted
-     */
-    virtual bool checkPromote(const PieceBoard& board, int toR, int toC) const;
-
-    /**
-     * Returns the checker this checker is promoted to.  The new checker
-     * is located at the same position as this checker.
-     *
-     * @return the checker this checker is promoted to
-     */
-    virtual std::shared_ptr<Piece> promote() const;
-
     virtual bool getLight() const;
 
     /**

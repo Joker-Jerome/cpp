@@ -1,8 +1,6 @@
 #include <memory>
 
 #include "lchecker.h"
-#include "king.h"
-
 #include "math.h"
 
 namespace cs427_527
