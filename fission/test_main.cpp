@@ -54,7 +54,7 @@ int main(int argc, char **argv)
 	  c = atoi(argv[2]);
 
 	  // check the input
-	  if (r % 2 != 0 || c % 2 !=0 || r > c || r < 4 || c < 4) {
+	  if (r % 2 != 0 || c % 2 !=0 || r < c || r < 4 || c < 4) {
 		  return 1;
 	  }
 
