@@ -1,0 +1,24 @@
+In this program, we’re using a function named generateResource() to create a smart pointer encapsulated resource, which is then passed back to function main(). Function main() then assigns that to an existing Auto_ptr3 object.
+
+When this program is run, it prints:
+
+Resource acquired
+Resource acquired
+Resource destroyed
+Resource acquired
+Resource destroyed
+Resource destroyed
+(Note: You may only get 4 outputs if your compiler elides the return value from function generateResource())
+
+That’s a lot of resource creation and destruction going on for such a simple program! What’s going on here?
+
+Let’s take a closer look. There are 6 key steps that happen in this program (one for each printed message):
+
+1) Inside generateResource(), local variable res is created and initialized with a dynamically allocated Resource, which causes the first “Resource acquired”.
+2) Res is returned back to main() by value. We return by value here because res is a local variable -- it can’t be returned by address or reference because res will be destroyed when generateResource() ends. So res is copy constructed into a temporary object. Since our copy constructor does a deep copy, a new Resource is allocated here, which causes the second “Resource acquired”.
+3) Res goes out of scope, destroying the originally created Resource, which causes the first “Resource destroyed”.
+4) The temporary object is assigned to mainres by copy assignment. Since our copy assignment also does a deep copy, a new Resource is allocated, causing yet another “Resource acquired”.
+5) The assignment expression ends, and the temporary object goes out of expression scope and is destroyed, causing a “Resource destroyed”.
+6) At the end of main(), mainres goes out of scope, and our final “Resource destroyed” is displayed.
+
+
