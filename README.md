@@ -1,2 +1,2 @@
 # C++
-## This repo is for cpp practicing
+## This repo is for C++ practicing
